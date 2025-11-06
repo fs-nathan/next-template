@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Next.js App Router Template
 
-## Getting Started
+A ready-to-use template for building Next.js (App Router) apps with Tailwind CSS, Prettier, ESLint, Husky, and lint-staged preconfigured. It includes format-on-save and lint-on-save settings for VS Code/Cursor and a pre-commit workflow to keep your codebase clean.
 
-First, run the development server:
+### Features
+
+- **Next.js (App Router)** with TypeScript
+- **Tailwind CSS** (v4)
+- **ESLint** (Next.js config + TypeScript) with **eslint-config-prettier**
+- **Prettier** for opinionated formatting
+- **Husky + lint-staged** pre-commit hooks
+- **Format on save** and **ESLint fix on save** via `.vscode/settings.json`
+- **Node version**: engines set to `>=22.19.0` with `.nvmrc`
+
+### Requirements
+
+- Node.js `>=22.19.0` (recommended: `nvm use` in project directory)
+
+### Getting Started
+
+Install dependencies and start the dev server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000` and start editing `src/app/page.tsx`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` — start Next.js in development
+- `npm run build` — build for production
+- `npm run start` — start production server
+- `npm run lint` — run ESLint
+- `npm run lint:fix` — run ESLint with auto-fix
+- `npm run format` — format all files with Prettier
+- `npm run format:check` — check formatting without writing
 
-## Learn More
+### Pre-commit Hooks
 
-To learn more about Next.js, take a look at the following resources:
+Husky and lint-staged run on each commit:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- JavaScript/TypeScript files: `eslint --fix` and `prettier --write`
+- JSON/CSS/SCSS/Markdown: `prettier --write`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Commits are blocked on ESLint errors; warnings do not fail commits by default.
 
-## Deploy on Vercel
+### Editor Integration (VS Code/Cursor)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This repo includes `.vscode/settings.json` with:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `editor.formatOnSave: true`
+- Prettier as default formatter
+- ESLint fix on save (`source.fixAll.eslint`)
+
+Install the Prettier extension (`esbenp.prettier-vscode`) for best results.
+
+### Project Structure
+
+```
+src/
+  app/           # Next.js App Router (layouts, pages, etc.)
+public/          # Static assets
+```
+
+### Notes
+
+- Node version is enforced via `"engines"` in `package.json` and `.nvmrc`.
+- Tailwind v4 is configured via `@tailwindcss/postcss` and `src/app/globals.css`.
+
+You're ready to build. Happy shipping!
